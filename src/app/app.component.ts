@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TodoFormComponent } from './todo-form/todo-form.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,TodoFormComponent,TodoListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -13,14 +15,36 @@ export class AppComponent {
 
 
   todos: Todo[] = [
-    {id: 1, title: 'Buy milk', done: false},
-    {id: 2, title: 'Walk the dog', done: true},
-    {id: 3, title: 'Write to the ASSISTANT', done: false}
+    {id:1, title: 'Buy milk',text:"blabla" ,done: false},
+    {id:2, title: 'Walk the dog',text:"blabla" ,done: true},
+    {id:3, title: 'Write to the ASSISTANT',text:"blabla" ,done: false}
   ];
+
+//   newTodo:string[]=[]
+
+addTodo(newTodo:any) {
+  const id = this.todos.length > 0 ? this.todos[this.todos.length - 1].id + 1 : 1;
+  this.todos.push({
+    id,
+    text: newTodo.text,
+    title: newTodo.title,
+    done: false
+  });
+  console.log(this.todos);
 }
 
+ onNewTodos(e : Todo[]){
+  this.todos.length=0;
+  for (const item of e) {
+    this.todos.push(item);
+  }
+ }
+}
+
+
 interface Todo {
-  id: number;
+  id:number;
   title: string;
+  text:string
   done: boolean;
 }

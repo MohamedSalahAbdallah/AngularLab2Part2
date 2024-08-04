@@ -1,0 +1,47 @@
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    @for (item of todos; track $index) {
+    <div class="col">
+      <div class="card">
+        <div class="card-body text-center">
+          @if (item.done) {
+          <h5
+            class="card-title text-center display-6 text-decoration-line-through"
+          >
+            {{ item.title }}
+          </h5>
+          <p class="card-text"></p>
+
+          <div class="text-decoration-line-through">
+            {{ item.text }}
+          </div>
+          }@else {
+          <h5 class="card-title text-center display-6">
+            {{ item.title }}
+          </h5>
+          <p class="card-text"></p>
+
+          <div class="">
+            {{ item.text }}
+          </div>
+          }
+          <div>
+            <input
+              type="checkbox"
+              name="done"
+              id="done"
+              value="done"
+              [checked]="item.done"
+              class="m-2"
+              (change)="updateStatus($event, item.id)"
+            />
+            <label for="done" class="text-dark"> completed</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <button class="btn btn-success" (click)="onSave($event)">Save</button>
+</div>
