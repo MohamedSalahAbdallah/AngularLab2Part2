@@ -15,9 +15,9 @@ export class AppComponent {
 
 
   todos: Todo[] = [
-    {id:1, title: 'Buy milk',text:"blabla" ,done: false},
-    {id:2, title: 'Walk the dog',text:"blabla" ,done: true},
-    {id:3, title: 'Write to the ASSISTANT',text:"blabla" ,done: false}
+    {id:1, title: 'Buy milk',text:"go to the store" ,done: false},
+    {id:2, title: 'Walk the dog',text:"go to the dog park" ,done: true},
+    {id:3, title: 'Write to the ASSISTANT',text:"update her on new tasks" ,done: false}
   ];
 
 //   newTodo:string[]=[]
